@@ -1,0 +1,23 @@
+{
+  "name": "grabber",
+  "version": "1.0.0",
+  "description": "simple currency grabber",
+  "main": "index.js",
+  "scripts": {
+    "test": "test",
+    "start": "nodemon index.js"
+  },
+  "author": "Lucker",
+  "license": "ISC",
+  "dependencies": {
+    "chartist": "^0.10.1",
+    "express": "^4.14.0",
+    "mongodb": "^2.2.21",
+    "mongoose": "^4.7.7",
+    "node-cron": "^1.1.2",
+    "nodemon": "^1.11.0",
+    "phantomjs": "^2.1.7",
+    "request": "^2.79.0",
+    "webpage": "^0.3.0"
+  }
+}
