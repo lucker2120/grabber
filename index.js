@@ -24,21 +24,25 @@ cron.schedule('* * 6 * * *', function() {
 });
 
 
-app.use('/public', express.static(path.join(__dirname, "public")));
+// app.use('/public', express.static(path.join(__dirname, "public")));
 
-app.get('/', function(req, res) {
+// app.get('/', function(req, res) {
 
-    fs.readFile('views/home.html', function(err, data) {
-        res.writeHead(200, {
-            "Content-Type": "text/html"
-        });
-        res.write(data);
-        res.send();
-    });
-})
-
+//     fs.readFile('views/home.html', function(err, data) {
+//         res.writeHead(200, {
+//             "Content-Type": "text/html"
+//         });
+//         res.write(data);
+//         res.send();
+//     });
+// })
+app.use((req, res, next) => {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "X-Requested-With");
+    next();
+});
 app.get('/api', currencyController.getAll);
 
 app.listen(5555, () => {
-    console.log('server stars on port 5555');
+    console.log('API server listening on port 5555');
 })
