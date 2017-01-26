@@ -7,7 +7,7 @@ app.use('/public', express.static(path.join(__dirname, "public")));
 
 app.get('/', function(req, res) {
 
-    fs.readFile('views/home.html', function(err, data) {
+    fs.readFile('public/home.html', function(err, data) {
         res.writeHead(200, {
             "Content-Type": "text/html"
         });
