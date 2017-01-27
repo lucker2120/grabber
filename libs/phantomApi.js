@@ -5,7 +5,7 @@ const finaceURL = 'http://finance.i.ua/';
 const request = require('request');
 const cheerio = require('cheerio');
 
-module.exports.saveKursToDB = function (msg){
+module.exports.saveKursToDB = function (msg){ // эти разбить на отдельные методы, переименовать этот
 	if(msg){
 		const kursCur = JSON.parse(msg);
 		let { buy, nbu, sale } = kursCur;
@@ -16,14 +16,14 @@ module.exports.saveKursToDB = function (msg){
 			grabbed_from: 'kurs.com.ua',
 			created_at: new Date()
 		})
-		currKurs.save(function(err) {
+		currKurs.save(function(err) { // запилить в папку helpers
 			if (err) throw err;
 			console.log('currency from kurs.com.ua saved');
 		})
 	}
 }
 
-module.exports.grabPrivatCurrency = function() {
+module.exports.grabPrivatCurrency = function() { // эти разбить на отдельные методы
     request(privatURL, function(error, response, body) {
         if (!error) {
             const $ = cheerio.load(body);
@@ -36,7 +36,7 @@ module.exports.grabPrivatCurrency = function() {
                 grabbed_from: 'privatbank.ua',
                 created_at: new Date()
             })
-            currPrivat.save(function(err) {
+            currPrivat.save(function(err) { // запилить в папку helpers
                 if (err) throw err;
                 console.log('currency from privatbank.ua saved');
             })
@@ -44,7 +44,7 @@ module.exports.grabPrivatCurrency = function() {
     })
 }
 
-module.exports.grabFinanceCurrency = function() {
+module.exports.grabFinanceCurrency = function() { // эти разбить на отдельные методы
     request(finaceURL, function(error, response, body) {
         if (!error) {
             const $ = cheerio.load(body);
@@ -58,7 +58,7 @@ module.exports.grabFinanceCurrency = function() {
                 grabbed_from: 'finance.i.ua',
                 created_at: new Date()
             })
-            currFinance.save(function(err) {
+            currFinance.save(function(err) { // запилить в папку helpers
                 if (err) throw err;
                 console.log('currency from finance.i.ua saved');
             })
@@ -66,6 +66,6 @@ module.exports.grabFinanceCurrency = function() {
     })
 }
 
-function getUsdCur(num){
+function getUsdCur(num){ // это в хелперс
 	return `.widget-currency_bank tbody tr:first-child td:nth-child(${num}) span.value span:first-child`
 }

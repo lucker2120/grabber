@@ -1,9 +1,10 @@
 const request = require('request');
 const cheerio = require('cheerio');
 const Currency = require('../models/Currency');
-const getUsdCur = require('../helpers/getUsdCurrency')
+const getUsdCur = require('../helpers/getUsdCurrency');
+const finaceURL = 'http://finance.i.ua/';
 
-module.exports.grabFinanceCurrency = function() { // эти разбить на отдельные методы
+module.exports = function() { // эти разбить на отдельные методы
     request(finaceURL, function(error, response, body) {
         if (!error) {
             const $ = cheerio.load(body);

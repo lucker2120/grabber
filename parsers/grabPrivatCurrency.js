@@ -1,8 +1,9 @@
 const request = require('request');
 const cheerio = require('cheerio');
 const Currency = require('../models/Currency');
+const privatURL = 'https://privatbank.ua/ru/';
 
-module.exports.grabPrivatCurrency = function() { // эти разбить на отдельные методы
+module.exports = function() { // эти разбить на отдельные методы
     request(privatURL, function(error, response, body) {
         if (!error) {
             const $ = cheerio.load(body);

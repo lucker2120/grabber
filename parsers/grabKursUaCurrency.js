@@ -2,7 +2,7 @@ const request = require('request');
 const cheerio = require('cheerio');
 const Currency = require('../models/Currency');
 
-module.exports.saveKursToDB = function (msg){ // эти разбить на отдельные методы, переименовать этот
+module.exports = function (msg){ // эти разбить на отдельные методы, переименовать этот
 	if(msg){
 		const kursCur = JSON.parse(msg);
 		let { buy, nbu, sale } = kursCur;
